@@ -169,7 +169,10 @@ let decision = score >= 7 ? "GO" : "NO GO";
 let decisionClass = score >= 7 ? "go" : "nogo";    
 let positioning = document.getElementById("positioning").value;
 let revenue = document.getElementById("revenue").value;
-
+let color = score >= 8 ? "#2a9d8f" :
+            score >= 7 ? "#e9c46a" :
+            "#e63946";
+    
 document.getElementById("result").innerHTML = `
 
 <h2>Résultat de l'analyse</h2>
@@ -181,7 +184,8 @@ document.getElementById("result").innerHTML = `
 
 <div class="section">
 <h3>Score d'attractivité</h3>
-<div class="score">${score} / 10</div>
+<div class="score" style="color:${color}">
+${score} / 10
 </div>
 
 <div class="section">
