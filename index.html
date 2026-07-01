@@ -1,46 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-<div class="container">
+<head>
 
-    <div class="card">
+<title>Market Expansion AI</title>
 
-        <h1>Market Expansion AI</h1>
-
-        <p class="subtitle">
-            Analysez rapidement le potentiel d'un nouveau marché.
-        </p>
-
-        <label>Marque</label>
-        <input id="brand">
-
-        <label>Pays cible</label>
-        <input id="country">
-
-        <label>Positionnement</label>
-
-        <select id="positioning">
-            <option>Premium</option>
-            <option>Mass Market</option>
-            <option>Luxury</option>
-            <option>Pharmacy</option>
-        </select>
-
-        <label>Objectif CA (€)</label>
-        <input id="revenue">
-
-        <button onclick="generateReport()">
-            Analyser le marché
-        </button>
-
-    </div>
-
-    <div id="result" class="result">
-    </div>
-
-</div>
-
-   <style>
+<style>
 
 body{
     font-family: Arial, sans-serif;
@@ -59,32 +24,29 @@ body{
     padding:30px;
     border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    margin-bottom:30px;
 }
 
 h1{
     color:#1d3557;
-    margin-bottom:10px;
 }
 
 .subtitle{
     color:#6c757d;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 label{
     display:block;
-    font-weight:bold;
     margin-bottom:5px;
+    font-weight:bold;
 }
 
-input,
-select{
+input,select{
     width:100%;
     padding:12px;
-    margin-bottom:20px;
-    border:1px solid #ced4da;
+    border:1px solid #ddd;
     border-radius:8px;
+    margin-bottom:20px;
     box-sizing:border-box;
 }
 
@@ -92,8 +54,7 @@ button{
     background:#1d3557;
     color:white;
     border:none;
-    padding:14px 25px;
-    font-size:16px;
+    padding:14px 24px;
     border-radius:8px;
     cursor:pointer;
 }
@@ -105,32 +66,29 @@ button:hover{
 .result{
     display:none;
     background:white;
-    border-radius:12px;
+    margin-top:30px;
     padding:30px;
+    border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
 .score{
-    font-size:38px;
-    font-weight:bold;
+    font-size:42px;
     color:#2a9d8f;
+    font-weight:bold;
 }
 
 .go{
     display:inline-block;
-    padding:8px 20px;
     background:#d8f3dc;
     color:#2d6a4f;
+    padding:8px 20px;
+    border-radius:25px;
     font-weight:bold;
-    border-radius:30px;
 }
 
 .section{
     margin-top:25px;
-}
-
-ul{
-    padding-left:20px;
 }
 
 </style>
@@ -139,9 +97,15 @@ ul{
 
 <body>
 
+<div class="container">
+
+<div class="card">
+
 <h1>Market Expansion AI</h1>
 
-<h2>Analyse d'opportunité marché</h2>
+<p class="subtitle">
+Évaluez rapidement le potentiel d'un nouveau marché.
+</p>
 
 <label>Marque</label>
 <input id="brand">
@@ -152,49 +116,23 @@ ul{
 <label>Positionnement</label>
 
 <select id="positioning">
-    <option>Premium</option>
-    <option>Mass Market</option>
-    <option>Luxury</option>
-    <option>Pharmacy</option>
+<option>Premium</option>
+<option>Mass Market</option>
+<option>Luxury</option>
+<option>Pharmacy</option>
 </select>
 
 <label>CA cible (€)</label>
 <input id="revenue">
 
 <button onclick="generateReport()">
-Analyser
+Analyser le marché
 </button>
 
+</div>
+
 <div id="result" class="result">
-
-<h2>Résultat</h2>
-
-<p><strong>Score attractivité :</strong> 8.2 / 10</p>
-
-<p><strong>Opportunités :</strong></p>
-
-<ul>
-<li>Croissance du marché skincare</li>
-<li>Fort développement e-commerce</li>
-<li>Demande de produits premium</li>
-</ul>
-
-<p><strong>Risques :</strong></p>
-
-<ul>
-<li>Concurrence élevée</li>
-<li>Réglementation locale</li>
-</ul>
-
-<p><strong>Recommandation :</strong></p>
-
-<h3 style="color:green;">
-GO
-</h3>
-
-<p>
-Entrée recommandée via distributeur local premium.
-</p>
+</div>
 
 </div>
 
@@ -212,64 +150,42 @@ document.getElementById("result").innerHTML = `
 <h2>Résultat de l'analyse</h2>
 
 <p><strong>Marque :</strong> ${brand}</p>
-
 <p><strong>Pays :</strong> ${country}</p>
-
 <p><strong>Positionnement :</strong> ${positioning}</p>
-
 <p><strong>CA cible :</strong> ${revenue} €</p>
 
 <div class="section">
-
 <h3>Score d'attractivité</h3>
-
-<div class="score">
-8.2 / 10
-</div>
-
+<div class="score">8.2 / 10</div>
 </div>
 
 <div class="section">
-
-<h3>Décision recommandée</h3>
-
-<div class="go">
-GO
-</div>
-
+<h3>Décision</h3>
+<div class="go">GO</div>
 </div>
 
 <div class="section">
-
 <h3>Opportunités</h3>
-
 <ul>
-<li>Forte croissance du marché skincare</li>
-<li>Développement rapide du e-commerce</li>
-<li>Demande croissante pour les marques premium</li>
+<li>Croissance du marché skincare</li>
+<li>Développement e-commerce</li>
+<li>Demande premium croissante</li>
 </ul>
-
 </div>
 
 <div class="section">
-
 <h3>Risques</h3>
-
 <ul>
-<li>Concurrence internationale élevée</li>
-<li>Adaptation réglementaire nécessaire</li>
+<li>Concurrence internationale</li>
+<li>Réglementation locale</li>
 </ul>
-
 </div>
 
 <div class="section">
-
 <h3>Stratégie recommandée</h3>
-
 <p>
-Entrée via un distributeur premium local puis développement progressif d'un réseau e-commerce.
+Entrée via distributeur premium local puis développement e-commerce.
 </p>
-
 </div>
 
 `;
@@ -278,9 +194,7 @@ document.getElementById("result").style.display = "block";
 
 }
 
-
 </script>
 
 </body>
-
 </html>
