@@ -1,8 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Market Expansion AI</title>
+<div class="container">
+
+    <div class="card">
+
+        <h1>Market Expansion AI</h1>
+
+        <p class="subtitle">
+            Analysez rapidement le potentiel d'un nouveau marché.
+        </p>
+
+        <label>Marque</label>
+        <input id="brand">
+
+        <label>Pays cible</label>
+        <input id="country">
+
+        <label>Positionnement</label>
+
+        <select id="positioning">
+            <option>Premium</option>
+            <option>Mass Market</option>
+            <option>Luxury</option>
+            <option>Pharmacy</option>
+        </select>
+
+        <label>Objectif CA (€)</label>
+        <input id="revenue">
+
+        <button onclick="generateReport()">
+            Analyser le marché
+        </button>
+
+    </div>
+
+    <div id="result" class="result">
+    </div>
+
+</div>
 
    <style>
 
