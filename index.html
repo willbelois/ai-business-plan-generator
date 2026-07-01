@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Business Plan Generator</title>
+</head>
+<body style="font-family: Arial; padding: 40px;">
+
+  <h1>AI Business Plan Generator</h1>
+
+  <input id="country" placeholder="Enter country" />
+  <button onclick="generate()">Generate</button>
+
+  <pre id="result"></pre>
+
+  <script>
+    async function generate() {
+      const country = document.getElementById("country").value;
+
+      const response = await fetch("http://localhost:8000/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ country })
+      });
+
+      const data = await response.json();
+      document.getElementById("result").innerText = data.plan;
+    }
+  </script>
+
+</body>
+</html>
