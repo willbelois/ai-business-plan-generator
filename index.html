@@ -1,33 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>AI Business Plan Generator</title>
+    <title>Market Expansion AI</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+        }
+
+        input,select{
+            width:100%;
+            padding:10px;
+            margin-bottom:15px;
+        }
+
+        button{
+            padding:12px 20px;
+            background:#0066cc;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+        .result{
+            margin-top:40px;
+            border:1px solid #ddd;
+            padding:20px;
+            display:none;
+        }
+
+    </style>
+
 </head>
-<body style="font-family: Arial; padding: 40px;">
 
-  <h1>AI Business Plan Generator</h1>
+<body>
 
-  <input id="country" placeholder="Enter country" />
-  <button onclick="generate()">Generate</button>
+<h1>Market Expansion AI</h1>
 
-  <pre id="result"></pre>
+<h2>Analyse d'opportunité marché</h2>
 
-  <script>
-    async function generate() {
-      const country = document.getElementById("country").value;
+<label>Marque</label>
+<input id="brand">
 
-      const response = await fetch("http://localhost:8000/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ country })
-      });
+<label>Pays cible</label>
+<input id="country">
 
-      const data = await response.json();
-      document.getElementById("result").innerText = data.plan;
-    }
-  </script>
+<label>Positionnement</label>
+
+<select id="positioning">
+    <option>Premium</option>
+    <option>Mass Market</option>
+    <option>Luxury</option>
+    <option>Pharmacy</option>
+</select>
+
+<label>CA cible (€)</label>
+<input id="revenue">
+
+<button onclick="generateReport()">
+Analyser
+</button>
+
+<div id="result" class="result">
+
+<h2>Résultat</h2>
+
+<p><strong>Score attractivité :</strong> 8.2 / 10</p>
+
+<p><strong>Opportunités :</strong></p>
+
+<ul>
+<li>Croissance du marché skincare</li>
+<li>Fort développement e-commerce</li>
+<li>Demande de produits premium</li>
+</ul>
+
+<p><strong>Risques :</strong></p>
+
+<ul>
+<li>Concurrence élevée</li>
+<li>Réglementation locale</li>
+</ul>
+
+<p><strong>Recommandation :</strong></p>
+
+<h3 style="color:green;">
+GO
+</h3>
+
+<p>
+Entrée recommandée via distributeur local premium.
+</p>
+
+</div>
+
+<script>
+
+function generateReport(){
+
+document.getElementById("result").style.display="block";
+
+}
+
+</script>
 
 </body>
+
 </html>
