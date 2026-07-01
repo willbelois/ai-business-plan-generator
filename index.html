@@ -86,7 +86,14 @@ button:hover{
     border-radius:25px;
     font-weight:bold;
 }
-
+.nogo{
+    display:inline-block;
+    background:#ffccd5;
+    color:#a4133c;
+    padding:8px 20px;
+    border-radius:25px;
+    font-weight:bold;
+}
 .section{
     margin-top:25px;
 }
@@ -157,6 +164,9 @@ let country = document.getElementById("country").value;
     "arabie saoudite": 9.1,
     "emirats arabes unis": 9.0
 };
+let score = scores[country.toLowerCase()] || 7.0;
+let decision = score >= 7 ? "GO" : "NO GO";
+let decisionClass = score >= 7 ? "go" : "nogo";    
 let positioning = document.getElementById("positioning").value;
 let revenue = document.getElementById("revenue").value;
 
@@ -171,12 +181,14 @@ document.getElementById("result").innerHTML = `
 
 <div class="section">
 <h3>Score d'attractivité</h3>
-<div class="score">8.2 / 10</div>
+<div class="score">${score} / 10</div>
 </div>
 
 <div class="section">
 <h3>Décision</h3>
-<div class="go">GO</div>
+<div class="${decisionClass}">
+${decision}
+</div>
 </div>
 
 <div class="section">
