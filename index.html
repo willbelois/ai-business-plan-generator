@@ -103,9 +103,41 @@ Entrée recommandée via distributeur local premium.
 
 function generateReport(){
 
+let brand = document.getElementById("brand").value;
+let country = document.getElementById("country").value;
+let positioning = document.getElementById("positioning").value;
+let revenue = document.getElementById("revenue").value;
+
+document.getElementById("result").innerHTML = `
+
+<h2>Résultat</h2>
+
+<p><strong>Marque :</strong> ${brand}</p>
+
+<p><strong>Pays cible :</strong> ${country}</p>
+
+<p><strong>Positionnement :</strong> ${positioning}</p>
+
+<p><strong>Objectif CA :</strong> ${revenue} €</p>
+
+<hr>
+
+<p><strong>Score attractivité :</strong> 8.2 / 10</p>
+
+<p><strong>Recommandation :</strong></p>
+
+<h3 style="color:green;">GO</h3>
+
+<p>
+Entrée recommandée via distributeur local premium.
+</p>
+
+`;
+
 document.getElementById("result").style.display="block";
 
 }
+
 
 </script>
 
