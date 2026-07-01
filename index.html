@@ -209,31 +209,72 @@ let revenue = document.getElementById("revenue").value;
 
 document.getElementById("result").innerHTML = `
 
-<h2>Résultat</h2>
+<h2>Résultat de l'analyse</h2>
 
 <p><strong>Marque :</strong> ${brand}</p>
 
-<p><strong>Pays cible :</strong> ${country}</p>
+<p><strong>Pays :</strong> ${country}</p>
 
 <p><strong>Positionnement :</strong> ${positioning}</p>
 
-<p><strong>Objectif CA :</strong> ${revenue} €</p>
+<p><strong>CA cible :</strong> ${revenue} €</p>
 
-<hr>
+<div class="section">
 
-<p><strong>Score attractivité :</strong> 8.2 / 10</p>
+<h3>Score d'attractivité</h3>
 
-<p><strong>Recommandation :</strong></p>
+<div class="score">
+8.2 / 10
+</div>
 
-<h3 style="color:green;">GO</h3>
+</div>
+
+<div class="section">
+
+<h3>Décision recommandée</h3>
+
+<div class="go">
+GO
+</div>
+
+</div>
+
+<div class="section">
+
+<h3>Opportunités</h3>
+
+<ul>
+<li>Forte croissance du marché skincare</li>
+<li>Développement rapide du e-commerce</li>
+<li>Demande croissante pour les marques premium</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h3>Risques</h3>
+
+<ul>
+<li>Concurrence internationale élevée</li>
+<li>Adaptation réglementaire nécessaire</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h3>Stratégie recommandée</h3>
 
 <p>
-Entrée recommandée via distributeur local premium.
+Entrée via un distributeur premium local puis développement progressif d'un réseau e-commerce.
 </p>
+
+</div>
 
 `;
 
-document.getElementById("result").style.display="block";
+document.getElementById("result").style.display = "block";
 
 }
 
