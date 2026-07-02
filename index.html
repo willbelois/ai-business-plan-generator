@@ -208,12 +208,14 @@ else if(positioning.trim() === "Pharmacy"){
 
 }
 
-let score = Math.min(
-    10,
-    Math.max(
-        0,
-        baseScore + positioningBonus + revenueBonus
-    )
+let score = Number(
+    Math.min(
+        10,
+        Math.max(
+            0,
+            baseScore + positioningBonus + revenueBonus
+        )
+    ).toFixed(1)
 );
 alert(
 "Base: " + baseScore +
