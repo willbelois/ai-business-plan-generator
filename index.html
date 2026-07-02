@@ -167,9 +167,10 @@ let scores = {
     "emirats arabes unis": 9.0
 };
 let baseScore = scores[country.toLowerCase()] || 7.0;
-let score = Math.min(10, baseScore + positioningBonus);
+
 let positioningBonus = 0;
-    if(positioning === "Premium"){
+
+if(positioning === "Premium"){
 
     positioningBonus = 0.5;
 
@@ -189,6 +190,8 @@ else if(positioning === "Pharmacy"){
     positioningBonus = 0.8;
 
 }
+
+let score = Math.min(10, baseScore + positioningBonus);
 let decision = score >= 7 ? "GO" : "NO GO";
     let recommendation = "";
 
