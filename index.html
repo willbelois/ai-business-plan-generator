@@ -149,7 +149,9 @@ function generateReport(){
 
 let brand = document.getElementById("brand").value;
 let country = document.getElementById("country").value;
-    let scores = {
+let positioning = document.getElementById("positioning").value;
+let revenue = document.getElementById("revenue").value;
+let scores = {
     "maroc": 8.8,
     "kazakhstan": 8.2,
     "suisse": 6.5,
@@ -164,7 +166,29 @@ let country = document.getElementById("country").value;
     "arabie saoudite": 9.1,
     "emirats arabes unis": 9.0
 };
-let score = scores[country.toLowerCase()] || 7.0;
+let baseScore = scores[country.toLowerCase()] || 7.0;
+let score = Math.min(10, baseScore + positioningBonus);
+let positioningBonus = 0;
+    if(positioning === "Premium"){
+
+    positioningBonus = 0.5;
+
+}
+else if(positioning === "Luxury"){
+
+    positioningBonus = 1.0;
+
+}
+else if(positioning === "Mass Market"){
+
+    positioningBonus = -0.5;
+
+}
+else if(positioning === "Pharmacy"){
+
+    positioningBonus = 0.8;
+
+}
 let decision = score >= 7 ? "GO" : "NO GO";
     let recommendation = "";
 
@@ -189,8 +213,6 @@ recommendation =
 
 }
 let decisionClass = score >= 7 ? "go" : "nogo";    
-let positioning = document.getElementById("positioning").value;
-let revenue = document.getElementById("revenue").value;
 let color = score >= 8 ? "#2a9d8f" :
             score >= 7 ? "#e9c46a" :
             "#e63946";
