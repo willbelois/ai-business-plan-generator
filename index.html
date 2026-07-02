@@ -166,6 +166,28 @@ let country = document.getElementById("country").value;
 };
 let score = scores[country.toLowerCase()] || 7.0;
 let decision = score >= 7 ? "GO" : "NO GO";
+    let recommendation = "";
+
+if(score >= 8){
+
+recommendation =
+"Potentiel élevé. Entrée immédiate recommandée via partenaire local premium.";
+
+}
+
+else if(score >= 7){
+
+recommendation =
+"Potentiel intéressant. Tester le marché avec un distributeur local.";
+
+}
+
+else{
+
+recommendation =
+"Marché peu prioritaire. Conserver les ressources pour des pays plus attractifs.";
+
+}
 let decisionClass = score >= 7 ? "go" : "nogo";    
 let positioning = document.getElementById("positioning").value;
 let revenue = document.getElementById("revenue").value;
@@ -218,7 +240,7 @@ ${decision}
 <div class="section">
 <h3>Stratégie recommandée</h3>
 <p>
-Entrée via distributeur premium local puis développement e-commerce.
+${recommendation}
 </p>
 </div>
 
