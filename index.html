@@ -150,7 +150,7 @@ function generateReport(){
 let brand = document.getElementById("brand").value;
 let country = document.getElementById("country").value;
 let positioning = document.getElementById("positioning").value;
-let revenue = document.getElementById("revenue").value;
+let revenue = Number(document.getElementById("revenue").value);
 let revenueBonus = 0;
 
 if(revenue > 10000000){
