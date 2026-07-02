@@ -151,6 +151,23 @@ let brand = document.getElementById("brand").value;
 let country = document.getElementById("country").value;
 let positioning = document.getElementById("positioning").value;
 let revenue = document.getElementById("revenue").value;
+let revenueBonus = 0;
+
+if(revenue > 10000000){
+
+    revenueBonus = -1.5;
+
+}
+else if(revenue > 5000000){
+
+    revenueBonus = -1.0;
+
+}
+else if(revenue > 1000000){
+
+    revenueBonus = -0.5;
+
+}
 let scores = {
     "maroc": 8.8,
     "kazakhstan": 8.2,
@@ -191,7 +208,13 @@ else if(positioning === "Pharmacy"){
 
 }
 
-let score = Math.min(10, baseScore + positioningBonus);
+let score = Math.min(
+    10,
+    Math.max(
+        0,
+        baseScore + positioningBonus + revenueBonus
+    )
+);
 let decision = score >= 7 ? "GO" : "NO GO";
     let recommendation = "";
 
