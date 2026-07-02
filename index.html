@@ -123,10 +123,10 @@ button:hover{
 <label>Positionnement</label>
 
 <select id="positioning">
-<option>Premium</option>
-<option>Mass Market</option>
-<option>Luxury</option>
-<option>Pharmacy</option>
+<option value="Premium">Premium</option>
+<option value="Mass Market">Mass Market</option>
+<option value="Luxury">Luxury</option>
+<option value="Pharmacy">Pharmacy</option>
 </select>
 
 <label>CA cible (€)</label>
@@ -187,22 +187,22 @@ let baseScore = scores[country.toLowerCase()] || 7.0;
 
 let positioningBonus = 0;
 
-if(positioning === "Premium"){
+if(positioning.trim() === "Premium"){
 
     positioningBonus = 0.5;
 
 }
-else if(positioning === "Luxury"){
+else if(positioning.trim() === "Luxury"){
 
     positioningBonus = 1.0;
 
 }
-else if(positioning === "Mass Market"){
+else if(positioning.trim() === "Mass Market"){
 
     positioningBonus = -0.5;
 
 }
-else if(positioning === "Pharmacy"){
+else if(positioning.trim() === "Pharmacy"){
 
     positioningBonus = 0.8;
 
@@ -249,6 +249,7 @@ document.getElementById("result").innerHTML = `
 
 <p><strong>Marque :</strong> ${brand}</p>
 <p><strong>Pays :</strong> ${country}</p>
+<p><strong>Positionnement sélectionné :</strong> ${positioning}</p>
 <p><strong>Positionnement :</strong> ${positioning}</p>
 <p><strong>CA cible :</strong> ${revenue} €</p>
 
