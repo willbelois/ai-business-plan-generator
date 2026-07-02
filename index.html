@@ -215,6 +215,12 @@ let score = Math.min(
         baseScore + positioningBonus + revenueBonus
     )
 );
+alert(
+"Base: " + baseScore +
+"\nPosition: " + positioningBonus +
+"\nRevenue: " + revenueBonus +
+"\nScore: " + score
+);
 let decision = score >= 7 ? "GO" : "NO GO";
     let recommendation = "";
 
@@ -255,9 +261,6 @@ document.getElementById("result").innerHTML = `
 
 <div class="section">
 <h3>Score d'attractivité</h3>
-<p><strong>Base score :</strong> ${baseScore}</p>
-<p><strong>Position bonus :</strong> ${positioningBonus}</p>
-<p><strong>Revenue bonus :</strong> ${revenueBonus}</p>
 <div class="score" style="color:${color}">
 ${score} / 10
 </div>
