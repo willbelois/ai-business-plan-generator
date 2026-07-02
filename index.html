@@ -247,10 +247,6 @@ document.getElementById("result").innerHTML = `
 
 <h2>Résultat de l'analyse</h2>
 
-<p><strong>Base score :</strong> ${baseScore}</p>
-<p><strong>Position bonus :</strong> ${positioningBonus}</p>
-<p><strong>Revenue bonus :</strong> ${revenueBonus}</p>
-
 <p><strong>Marque :</strong> ${brand}</p>
 <p><strong>Pays :</strong> ${country}</p>
 <p><strong>Positionnement sélectionné :</strong> ${positioning}</p>
@@ -259,7 +255,9 @@ document.getElementById("result").innerHTML = `
 
 <div class="section">
 <h3>Score d'attractivité</h3>
-
+<p><strong>Base score :</strong> ${baseScore}</p>
+<p><strong>Position bonus :</strong> ${positioningBonus}</p>
+<p><strong>Revenue bonus :</strong> ${revenueBonus}</p>
 <div class="score" style="color:${color}">
 ${score} / 10
 </div>
