@@ -281,6 +281,112 @@ function generateReport(){
     else if(revenue > 1000000){
         revenueBonus = -0.5;
     }
+    let channelBonus = 0;
+        if(country === "maroc"){
+    
+        if(channels.includes("E-commerce")){
+            channelBonus += 0.3;
+        }
+    
+        if(channels.includes("Retail")){
+            channelBonus += 0.2;
+        }
+    
+        if(channels.includes("Pharmacie")){
+            channelBonus += 0.4;
+        }
+    
+    }
+        if(country === "suisse"){
+    
+        if(channels.includes("Pharmacie")){
+            channelBonus += 0.8;
+        }
+    
+        if(channels.includes("Retail")){
+            channelBonus += 0.3;
+        }
+    
+    }
+        if(country === "arabie saoudite"){
+    
+        if(channels.includes("E-commerce")){
+            channelBonus += 0.6;
+        }
+    
+        if(channels.includes("Sephora")){
+            channelBonus += 0.8;
+        }
+    
+    }
+        if(category === "Skincare"){
+    
+        recommendation +=
+        " Le marché skincare présente une croissance attractive et bénéficie généralement de bons niveaux de fréquence d'achat.";
+    
+    }
+        if(category === "Make-up"){
+    
+        recommendation +=
+        " Le succès dépendra fortement de l'activation marketing et de la visibilité en magasin.";
+    
+    }
+        if(category === "Haircare"){
+    
+        recommendation +=
+        " Les partenariats avec salons et pharmacies peuvent constituer des leviers importants.";
+    
+    }
+        if(category === "Fragrance"){
+    
+        recommendation +=
+        " Les canaux prestige et department stores doivent être priorisés.";
+    
+    }
+        if(category === "Nutricosmetics"){
+    
+        recommendation +=
+        " La caution scientifique et le canal pharmacie constituent des facteurs clés de succès.";
+    
+    }
+    let categoryBonus = 0;
+        if(country === "maroc"){
+    
+        if(category === "Skincare"){
+            categoryBonus = 0.5;
+        }
+    
+        if(category === "Make-up"){
+            categoryBonus = 0.2;
+        }
+    
+        if(category === "Haircare"){
+            categoryBonus = 0.1;
+        }
+    
+    }
+    if(country === "arabie saoudite"){
+    
+        if(category === "Fragrance"){
+            categoryBonus = 1.0;
+        }
+    
+        if(category === "Skincare"){
+            categoryBonus = 0.8;
+        }
+    
+    }
+        if(country === "suisse"){
+    
+        if(category === "Nutricosmetics"){
+            categoryBonus = 0.7;
+        }
+    
+        if(category === "Skincare"){
+            categoryBonus = 0.4;
+        }
+    
+    }
 
     //----------------------
     // SCORE FINAL
@@ -432,75 +538,7 @@ else{
     "Approche prudente recommandée. Étudier des marchés alternatifs avant investissement.";
 
 }
-    let channelBonus = 0;
-    if(country === "maroc"){
-
-    if(channels.includes("E-commerce")){
-        channelBonus += 0.3;
-    }
-
-    if(channels.includes("Retail")){
-        channelBonus += 0.2;
-    }
-
-    if(channels.includes("Pharmacie")){
-        channelBonus += 0.4;
-    }
-
-}
-    if(country === "suisse"){
-
-    if(channels.includes("Pharmacie")){
-        channelBonus += 0.8;
-    }
-
-    if(channels.includes("Retail")){
-        channelBonus += 0.3;
-    }
-
-}
-    if(country === "arabie saoudite"){
-
-    if(channels.includes("E-commerce")){
-        channelBonus += 0.6;
-    }
-
-    if(channels.includes("Sephora")){
-        channelBonus += 0.8;
-    }
-
-}
-    if(category === "Skincare"){
-
-    recommendation +=
-    " Le marché skincare présente une croissance attractive et bénéficie généralement de bons niveaux de fréquence d'achat.";
-
-}
-    if(category === "Make-up"){
-
-    recommendation +=
-    " Le succès dépendra fortement de l'activation marketing et de la visibilité en magasin.";
-
-}
-    if(category === "Haircare"){
-
-    recommendation +=
-    " Les partenariats avec salons et pharmacies peuvent constituer des leviers importants.";
-
-}
-    if(category === "Fragrance"){
-
-    recommendation +=
-    " Les canaux prestige et department stores doivent être priorisés.";
-
-}
-    if(category === "Nutricosmetics"){
-
-    recommendation +=
-    " La caution scientifique et le canal pharmacie constituent des facteurs clés de succès.";
-
-}
-
+    
     //----------------------
     // OPPORTUNITÉS / RISQUES
     //----------------------
@@ -536,44 +574,6 @@ else{
         risks.push("Analyse complémentaire requise");
         risks.push("Informations marché limitées");
     }
-    let categoryBonus = 0;
-    if(country === "maroc"){
-
-    if(category === "Skincare"){
-        categoryBonus = 0.5;
-    }
-
-    if(category === "Make-up"){
-        categoryBonus = 0.2;
-    }
-
-    if(category === "Haircare"){
-        categoryBonus = 0.1;
-    }
-
-}
-if(country === "arabie saoudite"){
-
-    if(category === "Fragrance"){
-        categoryBonus = 1.0;
-    }
-
-    if(category === "Skincare"){
-        categoryBonus = 0.8;
-    }
-
-}
-    if(country === "suisse"){
-
-    if(category === "Nutricosmetics"){
-        categoryBonus = 0.7;
-    }
-
-    if(category === "Skincare"){
-        categoryBonus = 0.4;
-    }
-
-}
 
     //----------------------
     // RAPPORT
