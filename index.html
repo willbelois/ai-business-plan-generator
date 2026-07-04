@@ -141,6 +141,16 @@
 <label>Marque</label>
 <input id="brand">
 
+<label>Catégorie</label>
+
+<select id="category">
+<option value="Skincare">Skincare</option>
+<option value="Make-up">Make-up</option>
+<option value="Haircare">Haircare</option>
+<option value="Fragrance">Fragrance</option>
+<option value="Nutricosmetics">Nutricosmétique</option>
+</select>
+
 <label>Pays cible</label>
 <input id="country">
 
@@ -207,6 +217,7 @@ Analyser le marché
 function generateReport(){
 
     let brand = document.getElementById("brand").value;
+    let category = document.getElementById("category").value;
     let country = document.getElementById("country").value.toLowerCase().trim();
     let positioning = document.getElementById("positioning").value.trim();
     let revenue = Number(document.getElementById("revenue").value);
@@ -281,7 +292,7 @@ function generateReport(){
             10,
             Math.max(
                 0,
-                baseScore + positioningBonus + revenueBonus + channelBonus
+                baseScore + positioningBonus + revenueBonus + channelBonus + categoryBonus
             )
         ).toFixed(1)
 
@@ -459,6 +470,36 @@ else{
     }
 
 }
+    if(category === "Skincare"){
+
+    recommendation +=
+    " Le marché skincare présente une croissance attractive et bénéficie généralement de bons niveaux de fréquence d'achat.";
+
+}
+    if(category === "Make-up"){
+
+    recommendation +=
+    " Le succès dépendra fortement de l'activation marketing et de la visibilité en magasin.";
+
+}
+    if(category === "Haircare"){
+
+    recommendation +=
+    " Les partenariats avec salons et pharmacies peuvent constituer des leviers importants.";
+
+}
+    if(category === "Fragrance"){
+
+    recommendation +=
+    " Les canaux prestige et department stores doivent être priorisés.";
+
+}
+    if(category === "Nutricosmetics"){
+
+    recommendation +=
+    " La caution scientifique et le canal pharmacie constituent des facteurs clés de succès.";
+
+}
 
     //----------------------
     // OPPORTUNITÉS / RISQUES
@@ -495,6 +536,44 @@ else{
         risks.push("Analyse complémentaire requise");
         risks.push("Informations marché limitées");
     }
+    let categoryBonus = 0;
+    if(country === "maroc"){
+
+    if(category === "Skincare"){
+        categoryBonus = 0.5;
+    }
+
+    if(category === "Make-up"){
+        categoryBonus = 0.2;
+    }
+
+    if(category === "Haircare"){
+        categoryBonus = 0.1;
+    }
+
+}
+if(country === "arabie saoudite"){
+
+    if(category === "Fragrance"){
+        categoryBonus = 1.0;
+    }
+
+    if(category === "Skincare"){
+        categoryBonus = 0.8;
+    }
+
+}
+    if(country === "suisse"){
+
+    if(category === "Nutricosmetics"){
+        categoryBonus = 0.7;
+    }
+
+    if(category === "Skincare"){
+        categoryBonus = 0.4;
+    }
+
+}
 
     //----------------------
     // RAPPORT
@@ -505,6 +584,7 @@ else{
     <h2>Résultat de l'analyse</h2>
 
     <p><strong>Marque :</strong> ${brand}</p>
+    <p><strong>Catégorie :</strong> ${category}</p>
     <p><strong>Pays :</strong> ${country}</p>
     <p><strong>Positionnement :</strong> ${positioning}</p>
     <p><strong>CA cible :</strong> ${revenue.toLocaleString()} €</p>
@@ -525,6 +605,7 @@ else{
             <li>Pays : ${baseScore}</li>
             <li>Positionnement : ${positioningBonus > 0 ? "+" : ""}${positioningBonus}</li>
             <li>Objectif CA : ${revenueBonus}</li>
+            <li>Catégorie : ${categoryBonus > 0 ? "+" : ""}${categoryBonus}</li>
         </ul>
     </div>
 
