@@ -94,6 +94,26 @@
             font-weight:bold;
         }
 
+        .channels{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:10px;
+            margin-bottom:20px;
+        }
+
+        .channels label{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            font-weight:normal;
+        }
+        
+        .channels input{
+            width:auto;
+            margin:0;
+        }
+        ``
+
         .section{
             margin-top:25px;
         }
@@ -136,6 +156,43 @@
 <label>CA cible (€)</label>
 <input id="revenue" type="number">
 
+<label>Canaux de distribution visés</label>
+
+<div class="channels">
+
+<label>
+<input type="checkbox" value="E-commerce" class="channel">
+E-commerce
+</label>
+
+<label>
+<input type="checkbox" value="Pharmacie" class="channel">
+Pharmacie
+</label>
+
+<label>
+<input type="checkbox" value="Retail" class="channel">
+Retail
+</label>
+
+<label>
+<input type="checkbox" value="Department Store" class="channel">
+Department Store
+</label>
+
+<label>
+<input type="checkbox" value="Distributeur" class="channel">
+Distributeur local
+</label>
+
+<label>
+<input type="checkbox" value="Sephora" class="channel">
+Sephora / Premium Retail
+</label>
+
+</div>
+``
+
 <button onclick="generateReport()">
 Analyser le marché
 </button>
@@ -154,6 +211,9 @@ function generateReport(){
     let country = document.getElementById("country").value.toLowerCase().trim();
     let positioning = document.getElementById("positioning").value.trim();
     let revenue = Number(document.getElementById("revenue").value);
+    let channels = Array.from(
+    document.querySelectorAll(".channel:checked")
+    ).map(c => c.value);
 
     //----------------------
     // SCORE PAYS
@@ -222,7 +282,7 @@ function generateReport(){
             10,
             Math.max(
                 0,
-                baseScore + positioningBonus + revenueBonus
+                baseScore + positioningBonus + revenueBonus + channelBonus
             )
         ).toFixed(1)
 
@@ -362,6 +422,44 @@ else{
     "Approche prudente recommandée. Étudier des marchés alternatifs avant investissement.";
 
 }
+    let channelBonus = 0;
+    if(country === "maroc"){
+
+    if(channels.includes("E-commerce")){
+        channelBonus += 0.3;
+    }
+
+    if(channels.includes("Retail")){
+        channelBonus += 0.2;
+    }
+
+    if(channels.includes("Pharmacie")){
+        channelBonus += 0.4;
+    }
+
+}
+    if(country === "suisse"){
+
+    if(channels.includes("Pharmacie")){
+        channelBonus += 0.8;
+    }
+
+    if(channels.includes("Retail")){
+        channelBonus += 0.3;
+    }
+
+}
+    if(country === "arabie saoudite"){
+
+    if(channels.includes("E-commerce")){
+        channelBonus += 0.6;
+    }
+
+    if(channels.includes("Sephora")){
+        channelBonus += 0.8;
+    }
+
+}
 
     //----------------------
     // OPPORTUNITÉS / RISQUES
@@ -411,6 +509,7 @@ else{
     <p><strong>Pays :</strong> ${country}</p>
     <p><strong>Positionnement :</strong> ${positioning}</p>
     <p><strong>CA cible :</strong> ${revenue.toLocaleString()} €</p>
+    <p><strong>Canaux sélectionnés :</strong> ${channels.join(", ")} </p>
 
     <div class="section">
         <h3>Score d'attractivité</h3>
