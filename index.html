@@ -112,7 +112,6 @@
             width:auto;
             margin:0;
         }
-        ``
 
         .section{
             margin-top:25px;
@@ -446,36 +445,7 @@ function generateReport(){
         }
     
     }
-        if(category === "Skincare"){
-    
-        recommendation +=
-        " Le marché skincare présente une croissance attractive et bénéficie généralement de bons niveaux de fréquence d'achat.";
-    
-    }
-        if(category === "Make-up"){
-    
-        recommendation +=
-        " Le succès dépendra fortement de l'activation marketing et de la visibilité en magasin.";
-    
-    }
-        if(category === "Haircare"){
-    
-        recommendation +=
-        " Les partenariats avec salons et pharmacies peuvent constituer des leviers importants.";
-    
-    }
-        if(category === "Fragrance"){
-    
-        recommendation +=
-        " Les canaux prestige et department stores doivent être priorisés.";
-    
-    }
-        if(category === "Nutricosmetics"){
-    
-        recommendation +=
-        " La caution scientifique et le canal pharmacie constituent des facteurs clés de succès.";
-    
-    }
+
     let categoryBonus = 0;
         if(country === "maroc"){
     
@@ -645,6 +615,44 @@ else if(positioning === "Pharmacy"){
     }
 
 }
+// ----------------------
+// RECOMMANDATION CATEGORIE
+// ----------------------
+
+if(category === "Skincare"){
+
+    recommendation +=
+    " Le marché skincare présente une croissance attractive et bénéficie généralement de bons niveaux de fréquence d'achat.";
+
+}
+
+else if(category === "Make-up"){
+
+    recommendation +=
+    " Le succès dépendra fortement de l'activation marketing et de la visibilité en magasin.";
+
+}
+
+else if(category === "Haircare"){
+
+    recommendation +=
+    " Les partenariats avec salons et pharmacies peuvent constituer des leviers importants.";
+
+}
+
+else if(category === "Fragrance"){
+
+    recommendation +=
+    " Les canaux prestige et department stores doivent être priorisés.";
+
+}
+
+else if(category === "Nutricosmetics"){
+
+    recommendation +=
+    " La caution scientifique et le canal pharmacie constituent des facteurs clés de succès.";
+
+}
 let marketEntry = "";
 
 if(score >= 8){
@@ -671,11 +679,12 @@ else{
     //----------------------
 
     let opportunities = countryData
-        ? countryData.opportunities
-        : ["Potentiel à analyser"];
-    let risks = countryData
-        ? countryData.risks
-        : ["Analyse complémentaire requise"];
+    ? [...countryData.opportunities]
+    : ["Potentiel à analyser"];
+
+let risks = countryData
+    ? [...countryData.risks]
+    : ["Analyse complémentaire requise"];
 
     if(country === "maroc"){
         opportunities.push("Croissance rapide du segment premium");
@@ -717,6 +726,8 @@ else{
     <p><strong>Marque :</strong> ${brand}</p>
     <p><strong>Catégorie :</strong> ${category}</p>
     <p><strong>Pays :</strong> ${country}</p>
+    <p><strong>Taille du marché :</strong> ${countryData ? countryData.marketSize : "N/A"}</p>
+<p><strong>Croissance annuelle :</strong> ${countryData ? countryData.growth : "N/A"}</p>
     <p><strong>Positionnement :</strong> ${positioning}</p>
     <p><strong>CA cible :</strong> ${revenue.toLocaleString()} €</p>
     <p><strong>Canaux sélectionnés :</strong> ${channels.join(", ")} </p>
@@ -732,10 +743,11 @@ else{
     <div class="section">
         <h3>Détail du calcul</h3>
 
-        <ul>
+       <ul>
             <li>Pays : ${baseScore}</li>
             <li>Positionnement : ${positioningBonus > 0 ? "+" : ""}${positioningBonus}</li>
             <li>Objectif CA : ${revenueBonus}</li>
+            <li>Canaux : ${channelBonus > 0 ? "+" : ""}${channelBonus}</li>
             <li>Catégorie : ${categoryBonus > 0 ? "+" : ""}${categoryBonus}</li>
         </ul>
     </div>
