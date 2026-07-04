@@ -249,20 +249,119 @@ function generateReport(){
     // RECOMMANDATION
     //----------------------
 
-    let recommendation = "";
+let recommendation = "";
+
+if(positioning === "Premium"){
 
     if(score >= 8){
+
         recommendation =
-        "Potentiel élevé. Entrée immédiate recommandée via partenaire local premium.";
+        "Positionnement Premium très adapté à ce marché. Prioriser un distributeur premium, des retailers sélectifs et une stratégie de marque forte.";
+
     }
     else if(score >= 7){
+
         recommendation =
-        "Potentiel intéressant. Tester le marché avec un distributeur local.";
+        "Positionnement Premium possible mais nécessitant une validation locale. Tester le marché via un partenaire expérimenté.";
+
     }
     else{
+
         recommendation =
-        "Marché peu prioritaire. Conserver les ressources pour des pays plus attractifs.";
+        "Positionnement Premium risqué sur ce marché. Envisager une approche plus sélective ou différer le lancement.";
+
     }
+
+}
+
+else if(positioning === "Luxury"){
+
+    if(score >= 8){
+
+        recommendation =
+        "Le segment Luxe présente un fort potentiel. Prioriser les grands magasins, retailers prestige et partenariats haut de gamme.";
+
+    }
+    else if(score >= 7){
+
+        recommendation =
+        "Le segment Luxe reste envisageable mais demandera un investissement marketing important.";
+
+    }
+    else{
+
+        recommendation =
+        "Le potentiel Luxe paraît limité. Les coûts d'entrée risquent de dépasser les opportunités.";
+
+    }
+
+}
+
+else if(positioning === "Mass Market"){
+
+    if(score >= 8){
+
+        recommendation =
+        "Le Mass Market est pertinent. Prioriser la grande distribution, le e-commerce et des volumes importants.";
+
+    }
+    else if(score >= 7){
+
+        recommendation =
+        "Marché accessible mais la concurrence mass market sera forte. Prioriser un lancement progressif.";
+
+    }
+    else{
+
+        recommendation =
+        "Le Mass Market présente peu d'attractivité sur ce marché compte tenu du niveau de concurrence et de l'objectif visé.";
+
+    }
+
+}
+
+else if(positioning === "Pharmacy"){
+
+    if(score >= 8){
+
+        recommendation =
+        "Le canal pharmacie est particulièrement prometteur. Prioriser les chaînes de pharmacies et les recommandations professionnelles.";
+
+    }
+    else if(score >= 7){
+
+        recommendation =
+        "Le marché pharmacie est accessible mais nécessitera un solide argumentaire scientifique.";
+
+    }
+    else{
+
+        recommendation =
+        "Le potentiel du canal pharmacie semble limité. Une validation locale est recommandée avant tout investissement.";
+
+    }
+
+}
+let marketEntry = "";
+
+if(score >= 8){
+
+    marketEntry =
+    "Entrée agressive recommandée avec recherche active de distributeurs et plan marketing dédié.";
+
+}
+else if(score >= 7){
+
+    marketEntry =
+    "Approche progressive recommandée avec test de marché sur une zone limitée.";
+
+}
+else{
+
+    marketEntry =
+    "Approche prudente recommandée. Étudier des marchés alternatifs avant investissement.";
+
+}
 
     //----------------------
     // OPPORTUNITÉS / RISQUES
@@ -364,6 +463,12 @@ function generateReport(){
 
     </div>
 
+    <div class="section">
+<h3>Stratégie d'entrée recommandée</h3>
+
+<p>${marketEntry}</p>
+
+</div>
     `;
 
     document.getElementById("result").style.display = "block";
