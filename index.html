@@ -229,23 +229,150 @@ function generateReport(){
     // SCORE PAYS
     //----------------------
 
-    let scores = {
-        "maroc": 8.8,
-        "kazakhstan": 8.2,
-        "suisse": 6.5,
-        "france": 5.5,
-        "allemagne": 7.2,
-        "espagne": 6.8,
-        "italie": 6.9,
-        "uk": 7.5,
-        "royaume-uni": 7.5,
-        "usa": 8.5,
-        "etats-unis": 8.5,
-        "arabie saoudite": 9.1,
-        "emirats arabes unis": 9.0
-    };
+    let countries = {
 
-    let baseScore = scores[country] || 7.0;
+    "maroc": {
+
+        score: 8.8,
+
+        marketSize: "1,2 Md€",
+
+        growth: "7%",
+
+        competitors: [
+            "La Roche Posay",
+            "Bioderma",
+            "Vichy"
+        ],
+
+        recommendedChannels: [
+            "Pharmacie",
+            "E-commerce",
+            "Retail Premium"
+        ],
+
+        marketingBudget: "250k€ - 400k€",
+
+        opportunities: [
+            "Croissance rapide du segment premium",
+            "Développement du e-commerce",
+            "Modernisation du retail"
+        ],
+
+        risks: [
+            "Sensibilité prix",
+            "Dépendance aux distributeurs locaux"
+        ]
+
+    },
+
+    "suisse": {
+
+        score: 6.5,
+
+        marketSize: "2,1 Md€",
+
+        growth: "2%",
+
+        competitors: [
+            "Nuxe",
+            "La Roche Posay",
+            "Cerave"
+        ],
+
+        recommendedChannels: [
+            "Pharmacie",
+            "Retail Premium"
+        ],
+
+        marketingBudget: "300k€ - 500k€",
+
+        opportunities: [
+            "Pouvoir d'achat élevé",
+            "Consommateurs premium"
+        ],
+
+        risks: [
+            "Marché mature",
+            "Concurrence très forte"
+        ]
+
+    },
+
+    "arabie saoudite": {
+
+        score: 9.1,
+
+        marketSize: "5,4 Md€",
+
+        growth: "11%",
+
+        competitors: [
+            "Huda Beauty",
+            "La Mer",
+            "Clinique"
+        ],
+
+        recommendedChannels: [
+            "E-commerce",
+            "Sephora",
+            "Department Store"
+        ],
+
+        marketingBudget: "500k€ - 800k€",
+
+        opportunities: [
+            "Forte croissance beauté",
+            "Demande premium très élevée"
+        ],
+
+        risks: [
+            "Environnement réglementaire spécifique",
+            "Coûts marketing importants"
+        ]
+
+    },
+
+    "kazakhstan": {
+
+        score: 8.2,
+
+        marketSize: "850 M€",
+
+        growth: "9%",
+
+        competitors: [
+            "Cerave",
+            "Vichy",
+            "La Roche Posay"
+        ],
+
+        recommendedChannels: [
+            "Pharmacie",
+            "Distributeur local"
+        ],
+
+        marketingBudget: "150k€ - 300k€",
+
+        opportunities: [
+            "Croissance du skincare",
+            "Marché encore peu saturé"
+        ],
+
+        risks: [
+            "Complexité logistique",
+            "Dépendance importation"
+        ]
+
+    }
+
+};
+
+    let countryData = countries[country];
+
+    let baseScore = countryData
+        ? countryData.score
+        : 7.0;
 
     //----------------------
     // BONUS POSITIONNEMENT
@@ -543,8 +670,12 @@ else{
     // OPPORTUNITÉS / RISQUES
     //----------------------
 
-    let opportunities = [];
-    let risks = [];
+    let opportunities = countryData
+        ? countryData.opportunities
+        : ["Potentiel à analyser"];
+    let risks = countryData
+        ? countryData.risks
+        : ["Analyse complémentaire requise"];
 
     if(country === "maroc"){
         opportunities.push("Croissance rapide du segment premium");
@@ -643,11 +774,55 @@ else{
     </div>
 
     <div class="section">
-<h3>Stratégie d'entrée recommandée</h3>
+        <h3>Stratégie d'entrée recommandée</h3>
+        
+        <p>${marketEntry}</p>
+        
+    </div>
 
-<p>${marketEntry}</p>
+    <div class="section">
+        <h3>Principaux concurrents</h3>
+    
+        <ul>
+            ${
+                countryData
+                ? countryData.competitors.map(c =>
+                    `<li>${c}</li>`
+                  ).join("")
+                : "<li>Données indisponibles</li>"
+            }
+        </ul>
+    
+    </div>
+    
+    <div class="section">
+        <h3>Canaux recommandés</h3>
+        
+        <ul>
+            ${
+                countryData
+                ? countryData.recommendedChannels.map(c =>
+                    `<li>${c}</li>`
+                  ).join("")
+                : "<li>Analyse complémentaire requise</li>"
+            }
+        </ul>
+        
+    </div>
 
-</div>
+    <div class="section">
+        <h3>Budget marketing recommandé</h3>
+        
+        <p>
+        ${
+            countryData
+            ? countryData.marketingBudget
+            : "À déterminer"
+        }
+        </p>
+        
+    </div>
+    
     `;
 
     document.getElementById("result").style.display = "block";
